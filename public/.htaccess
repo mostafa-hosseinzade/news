@@ -1,0 +1,9 @@
+# Prevent redirection to directory: 'root/css' won't turn into 'root/public/css?url=css'
+DirectorySlash off
+
+RewriteEngine on
+
+# When 'root/css', 'root/img' or 'root/js' is accessed, return the real path 'root/public/css/...'
+RewriteRule ^((css|img|js)/(.+))$ public/$1 [END]
+# For all the requests just pass the u
+RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,END]

@@ -1,0 +1,32 @@
+
+<section class="mbr-cards mbr-section mbr-section-nopadding" id="features3-5" style="background-color: rgb(255, 255, 255);">
+    <div class="mbr-cards-row row">
+
+
+        <div ng-repeat="item in mostlike" class="mbr-cards-col col-xs-12 col-lg-3" style="direction: rtl;padding-top: 80px; padding-bottom: 80px;">
+            <div class="container">
+                <div class="card cart-block">
+                    <div class="card-img">
+                        <span ng-if="item.file != undefined">
+                            <img src="{{item.file}}" style="height: 200px;width: 100%" class="card-img-top">
+                        </span>
+                        <span ng-if="item.file == undefined">
+                            <img src="assets/images/desktop.jpg" style="height: 200px;width: 100%" class="card-img-top">
+                        </span>
+                    </div>
+
+                    <div class="card-block">
+                        <h4 class="card-title">{{item.title}}</h4>
+
+                        <p class="card-text">
+                           {{item.content | htmlToPlaintext:item.content | cut :true:80:'...' }}
+                        </p>
+                        <div class="card-btn"><a href="#/showisi/{{item.id}}" class="btn btn-primary">اطلاعات بیشتر</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</section>

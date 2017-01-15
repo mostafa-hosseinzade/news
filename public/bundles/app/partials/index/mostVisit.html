@@ -1,0 +1,38 @@
+<section class="mbr-gallery mbr-section mbr-section-nopadding mbr-slider-carousel" id="gallery4-3" data-filter="true" style="background-color: rgb(235, 107, 86); padding-top: 0rem; padding-bottom: 0rem;">
+    <!-- Filter -->
+    <div class="mbr-gallery-filter container gallery-filter-active">
+        <div class="mbr-gallery-filter container gallery-filter-active">
+        <ul>
+            <li class="mbr-gallery-filter-all"><h2>پربازدید ها</h2></li>
+        </ul>
+    </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="mbr-gallery-row">
+        <div class=" mbr-gallery-layout-default">
+            <div>
+                <div>
+                    <div ng-repeat="item in mostvisit" class="mbr-gallery-item mbr-gallery-item__mobirise3 mbr-gallery-item--p1" data-tags="Awesome{{item.ctg_id}}" data-video-url="false">
+                        <div  data-slide-to="0" data-toggle="modal">
+                            <span ng-if="item.file.length != undefined">
+                                <img alt="" src="{{item.file}}" style=" height: 200px;">
+                            </span>
+
+                            <span ng-if="item.file == undefined">
+                                <img alt="" src="assets/images/windows-books-small.jpg" style="    height: 200px;">
+                            </span>
+                            <a href="#/showisi/{{item.id}}">
+                                <span class="icon-focus"></span>
+                                <span class="mbr-gallery-title" style="direction: rtl">{{item.title}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+</section>
