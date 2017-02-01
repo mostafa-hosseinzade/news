@@ -185,10 +185,10 @@ app.directive('inputfile', function($routeParams, $compile) {
                         $scope.myImage = image.src;
                     });
 
-                    var width2 = 200;
-                    var height2 = 265;
+                    var width2 = 265;
+                    var height2 = 200;
 
-                    var cropper = $('#cropper').find('img').cropper({aspectRatio: 3 / 4, modal: false, minCropBoxWidth: width2, minCanvasWidth: height2, maxWidth: 1024, minWidth: 640,
+                    var cropper = $('#cropper').find('img').cropper({aspectRatio: 4 / 3, modal: false, minCropBoxWidth: width2, minCanvasWidth: height2, maxWidth: 1024, minWidth: 640,
                         build: function() {
                             img = $('#cropper').find('img');
 

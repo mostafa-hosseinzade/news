@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/bundles/admin/css/admin.css">
         <link rel="stylesheet" href="/bundles/public/css/loading-bar.css">
         <link rel="stylesheet" href="/bundles/public/css/cropper.min.css">
+        <link rel="stylesheet" href="/bundles/public/css/font-awesome.min.css">
     </head>    
     <body ng-controller="MainController">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

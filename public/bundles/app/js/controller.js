@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('MySite', ['ngRoute', 'angular-loading-bar', 'ngAnimate', 'infinite-scroll']);
+var app = angular.module('MySite', ['ngRoute', 'angular-loading-bar', 'ngAnimate', 'infinite-scroll', 'ui.bootstrap']);
 app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: baseUrl + 'bundles/app/partials/index/index.html', controller: 'Index'});
         $routeProvider.when('/Portfolio', {templateUrl: baseUrl + 'bundles/app/partials/Portfolio/index.html', controller: 'Portfolio'});
@@ -58,7 +58,7 @@ app.controller('Isi', function ($scope, $http, $routeParams, portfolioService) {
         } catch (e) {
         }
     }
-    
+
     $scope.ShowPortfolio = function (portfolio) {
         $scope.PortfolioInfo = portfolio;
         $('.ShowPortfolio').modal('show');
@@ -69,12 +69,12 @@ app.controller('Isi', function ($scope, $http, $routeParams, portfolioService) {
             return img;
         return "/bundles/public/img/isi.jpg";
     }
-    
-    $scope.ShowHtmlContent = function(className,data){
-     console.log("Class Name is : "+className+" data is : "+data);
-    $('.'+className).html(data);    
+
+    $scope.ShowHtmlContent = function (className, data) {
+        console.log("Class Name is : " + className + " data is : " + data);
+        $('.' + className).html(data);
     }
-    
+
     $scope.ShowIsi = function (isi) {
         $scope.IsiInfo = isi;
         $('.ShowIsi').modal("show");
@@ -105,7 +105,7 @@ app.controller('Isi', function ($scope, $http, $routeParams, portfolioService) {
                 $('.msg').fadeOut();
                 if ($scope.ISI.length == undefined) {
                     $scope.ISI = data.isi;
-                    after=items;
+                    after = items;
                 } else {
                     for (var i = 0; i < items; i++) {
                         $scope.ISI.push(data.isi[i]);
@@ -146,20 +146,20 @@ app.controller('Isi', function ($scope, $http, $routeParams, portfolioService) {
     };
 });
 
-app.controller('ShowIsi',function ($scope,$http,$routeParams){
+app.controller('ShowIsi', function ($scope, $http, $routeParams) {
     var id = $routeParams.id;
-    $http.get(baseUrl+"Default/ShowIsi/"+id).success(function(data){
+    $http.get(baseUrl + "Default/ShowIsi/" + id).success(function (data) {
         $scope.data = data.isi;
         $scope.allIsi = data.allIsi;
-    }).error(function(){
+    }).error(function () {
         console.log("error");
     });
-     $scope.ShowImg = function (img) {
+    $scope.ShowImg = function (img) {
         if (img != undefined)
             return img;
         return "/bundles/public/img/isi.jpg";
     }
-    $scope.ShowContent = function (data){
+    $scope.ShowContent = function (data) {
         $('.showdata').html(data);
     }
 });
@@ -199,7 +199,7 @@ app.controller("News", function ($scope, $http) {
                 $('.msg').fadeOut();
                 if ($scope.news.length == undefined) {
                     $scope.news = data.news;
-                    after=items;
+                    after = items;
                 } else {
                     for (var i = 0; i < items; i++) {
                         $scope.news.push(data.news[i]);
@@ -270,6 +270,73 @@ app.controller("Footer", function ($scope, $http) {
         $scope.Services = response;
     });
 });
+
+app.controller('CarouselDemoCtrl', function ($scope, $http) {
+    $scope.myInterval = 5000;
+    $scope.noWrapSlides = false;
+    $scope.active = 0;
+    var slides = $scope.slides = [];
+    var currIndex = 0;
+
+    $http.get(base_url + "Default/data/slider").success(function (response) {
+        console.log($scope.slides)
+
+        for (var i = 0; i < response.length; i++) {
+            slides.push({
+                title : response[i]['title'],
+                image: response[i]['file'],
+                text: response[i]['content'],
+                id: currIndex++
+            });
+        }
+    })
+
+//    $scope.addSlide = function () {
+//
+//        var newWidth = 600 + slides.length + 1;
+//        slides.push({
+//            image: '//unsplash.it/' + newWidth + '/300',
+//            text: ['Nice image', 'Awesome photograph', 'That is so cool', 'I love that'][slides.length % 4],
+//            id: currIndex++
+//        });
+//    };
+
+    $scope.randomize = function () {
+        var indexes = generateIndexesArray();
+        assignNewIndexesToSlides(indexes);
+    };
+
+    // Randomize logic below
+    function assignNewIndexesToSlides(indexes) {
+        for (var i = 0, l = slides.length; i < l; i++) {
+            slides[i].id = indexes.pop();
+        }
+    }
+
+    function generateIndexesArray() {
+        var indexes = [];
+        for (var i = 0; i < currIndex; ++i) {
+            indexes[i] = i;
+        }
+        return shuffle(indexes);
+    }
+
+    function shuffle(array) {
+        var tmp, current, top = array.length;
+
+        if (top) {
+            while (--top) {
+                current = Math.floor(Math.random() * (top + 1));
+                tmp = array[current];
+                array[current] = array[top];
+                array[top] = tmp;
+            }
+        }
+
+        return array;
+    }
+});
+
 
 //$offset, $limit, $attr, $asc
 app.factory("portfolioService", function ($http) {
@@ -344,7 +411,7 @@ app.filter('boolean', function () {
 // This Filter For Remove Tag HTML  
 app.filter('htmlToPlaintext', function () {
     return function (text) {
-        return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+        return jQuery(text).text() ;//text ? String(text).replace(/<[^>]+>/gm, '') : '';
     };
 }).filter('Rial', function () {
     return function (dateString) {

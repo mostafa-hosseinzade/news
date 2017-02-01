@@ -26,7 +26,8 @@
   font-style: normal;
 }*/
 
-* {
+label,input,textArea,h1,h2,h3,h4,h5,h6,
+button,a,table,tr,th,thead{
     direction: rtl;
 }
 

@@ -1,68 +1,15 @@
-<section class="mbr-slider mbr-section mbr-section__container carousel slide mbr-section-nopadding mbr-after-navbar" data-ride="carousel" data-keyboard="false" data-wrap="true" data-pause="false" data-interval="5000" id="slider-0">
-    <div>
-        <div>
-            <div>
-                <ol class="carousel-indicators">
-                    <li data-app-prevent-settings="" data-target="#slider-0" data-slide-to="0" class="active"></li><li data-app-prevent-settings="" data-target="#slider-0" class="" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider-0" data-slide-to="2" class=""></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div ng-repeat="item in slider">
-                        <span ng-if="$index == 1">
-                            <div class="mbr-section mbr-section-hero carousel-item dark center mbr-section-full active" data-bg-video-slide="false" style="background-image: url({{item.file}});">
-                                <div class="mbr-table-cell">
-                                    <div class="mbr-overlay"></div>
-                                    <div class="container-slide container">
-
-                                        <div class="row">
-                                            <div class="col-md-8 col-md-offset-2 text-xs-center">
-                                                <h2 class="mbr-section-title display-1">{{item.title}}</h2>
-                                                <p class="mbr-section-lead lead">
-                                                  {{item.content | htmlToPlaintext:item.content | cut :true:100:'...' }}
-                                                </p>
-
-                                                <div class="mbr-section-btn">
-                                                    <a class="btn btn-lg btn-success" href="#/showisi/{{item.id}}">اطلاعات بیشتر</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </span>
-                        <span ng-if="$index != 1">
-                            <div class="mbr-section mbr-section-hero carousel-item dark center mbr-section-full" data-bg-video-slide="false" style="background-image: url(assets/images/bridge.jpg);">
-                                 <div class="mbr-table-cell">
-                                    <div class="mbr-overlay"></div>
-                                    <div class="container-slide container">
-
-                                        <div class="row">
-                                            <div class="col-md-8 col-md-offset-2 text-xs-center">
-                                                <h2 class="mbr-section-title display-1">{{item.title}}</h2>
-                                                <p class="mbr-section-lead lead">
-                                                  {{item.content | htmlToPlaintext:item.content | cut :true:100:'...' }}
-                                                </p>
-
-                                                <div class="mbr-section-btn">
-                                                    <a class="btn btn-lg btn-success" href="#/showisi/{{item.id}}">اطلاعات بیشتر</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </span>
+<div ng-controller="CarouselDemoCtrl">
+    <div style="height: 600px;width: 100%;max-width: 100%">
+        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <div style="width: 100%" uib-slide ng-repeat="item in slides track by item.id" index="item.id">
+                <img ng-src="{{item.image}}" style="margin:auto;height: 610px;width: 100%">
+                <div style="position: absolute;z-index: 999;background-color: rgba(0,0,0,0.4);direction: rtl;width: 100%;height: 100%;top: 0;right: 0">
+                    <div class="carousel-caption">
+                        <h4>{{item.title}}</h4>
+                        <p>{{item.text| htmlToPlaintext:item.text | cut :true:100:'...' }}</p>
                     </div>
                 </div>
-
-                <a data-app-prevent-settings="" class="left carousel-control" role="button" data-slide="prev" href="#slider-0">
-                    <span class="icon-prev" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a data-app-prevent-settings="" class="right carousel-control" role="button" data-slide="next" href="#slider-0">
-                    <span class="icon-next" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
         </div>
     </div>
-</section>
+</div>

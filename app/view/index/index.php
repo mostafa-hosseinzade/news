@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title></title>
-        <!--<link rel="stylesheet" href="/bundles/public/css/bootstrap.rtl.css">-->
+        <link rel="stylesheet" href="/bundles/app/css/bootstrap.css">
         <link rel="stylesheet" href="/bundles/public/css/custom.css">
         <!--<link href="/bundles/public/fonts/css/font-awesome.min.css" rel="stylesheet">-->
         <link rel="stylesheet" href="/bundles/public/css/loading-bar.css">
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/assets/theme/css/style.css">
         <link rel="stylesheet" href="/assets/mobirise-gallery/style.css">
         <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-
+        <link rel="stylesheet" href="/bundles/public/css/font-awesome.min.css">
     </head>
     <body>
         <!-- header menu -->
@@ -65,7 +65,7 @@
 
         <section id="menu-0">
 
-            <nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
+            <nav style="background-color: rgba(0,0,0,0.6) !important" class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
                 <div class="container">
 
                     <div class="mbr-table">
@@ -111,19 +111,19 @@
         </section>
 
         <div class="main" id="test2">
-
             <div ng-view></div>
-
+            <div class="clearfix"></div>
         </div>
-        
+         <footer ng-controller="Footer"></footer>
         <script>
             var base_url = '<?php echo base_url ?>';
         </script>
         <script src="/bundles/public/angular/jquery.js"></script>
         <script src="/bundles/admin/js/angular.min.js"></script>
         <script src="/bundles/public/js/angular-route.min.js"></script>
-        <script src="/bundles/public/js/angular-animate.min.js"></script>
-        <script src="/bundles/public/js/angular/angular-resource.min.js"></script>       
+        <script src="/bundles/public/angular/angular-animate-1.6.min.js"></script>
+        <script src="/bundles/public/js/angular/angular-resource.min.js"></script>
+        <script src="/bundles/public/angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
         <script src="/bundles/public/js/loading-bar.js"></script> 
         <script src="/bundles/public/js/bootstrap.min.js"></script>
         <script src="/bundles/public/js/angular/ng-infinite-scroll.min.js"></script>
